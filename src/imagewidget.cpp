@@ -88,7 +88,7 @@ QImage ImageWidget::frameToImage(const std::vector<std::vector<double>>& frame) 
     // Fill image with colormap
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-            // Normalize to [0, 1]
+            //Normalize to [0, 1] for color map
             double normalized = (frame[y][x] - minVal) / (maxVal - minVal);
             
             // Apply colormap

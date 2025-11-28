@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget* parent)
     updateTimer->setInterval(100);
     connect(updateTimer, &QTimer::timeout, this, &MainWindow::onTimerUpdate);
     
-    setWindowTitle("Microscope Viewer - Qt Only");
+    setWindowTitle("Microscope Viewer");
     resize(800, 600);
 }
 
@@ -74,31 +74,26 @@ void MainWindow::setupUI() {
     // Create horizontal layout for image and plots
     QHBoxLayout* displayLayout = new QHBoxLayout();
     
-    // Left: Image display widget
     imageWidget = new ImageWidget(this);
-    displayLayout->addWidget(imageWidget, 2); // stretch factor = 2
+    int stretchFactor1 = 2;
+    displayLayout->addWidget(imageWidget, stretchFactor1); // stretch factor = 2
     
-    // Right: Plots layout (vertical)
     QVBoxLayout* plotsLayout = new QVBoxLayout();
     
-    // X-axis profile plot
     xProfilePlot = new PlotWidget(this);
     xProfilePlot->setTitle("X-Axis Profile");
     xProfilePlot->setAxisLabels("X Position (pixels)", "Average Intensity");
     plotsLayout->addWidget(xProfilePlot);
     
-    // Y-axis profile plot
     yProfilePlot = new PlotWidget(this);
     yProfilePlot->setTitle("Y-Axis Profile");
     yProfilePlot->setAxisLabels("Y Position (pixels)", "Average Intensity");
     plotsLayout->addWidget(yProfilePlot);
+    int stretchFactor2 = 1 ;
+    displayLayout->addLayout(plotsLayout, stretchFactor2);
+    mainLayout->addLayout(displayLayout, stretchFactor2);
     
-    displayLayout->addLayout(plotsLayout, 1); // stretch factor = 1
-    
-    mainLayout->addLayout(displayLayout, 1); // stretch factor = 1
-    
-    // Status bar
-    statusBar()->showMessage("Ready - No OpenCV required!");
+    statusBar()->showMessage("Ready!");
 }
 
 void MainWindow::onStartStopClicked() {
