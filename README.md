@@ -2,25 +2,22 @@
 
 Simple camera frame viewer using **Qt only** - no OpenCV required!
 
-## Features
+## Existing Features translate from the Python assignement input data
 
-- ✅ Live camera frame display
-- ✅ Start/Stop button control
-- ✅ FPS counter
-- ✅ VIRIDIS-like colormap (pure Qt implementation)
-- ✅ **X-axis profile plot** (average intensity along X)
-- ✅ **Y-axis profile plot** (average intensity along Y)
-- ✅ Synchronized display (all plots from same frame)
-- ✅ Works with MinGW or MSVC
-- ✅ **No external dependencies** except Qt!
+- Live camera frame display
+- Start/Stop button control
+- FPS counter
+- VIRIDIS-like colormap (pure Qt implementation)
+- Works with MinGW or MSVC
+- **No external dependencies** except Qt!
 
 ## Prerequisites
 
-**Just Qt!** That's it!
+**Just Qt!**
 
-- Qt 6.x (6.9.2, 6.9.3, or any 6.x version)
-- Any compiler: MinGW, MSVC, GCC
-- Any platform: Windows, macOS, Linux
+- Qt 6.9.3
+- Any compiler: MinGW
+- Any platform: Windows
 
 ## Build Instructions
 
@@ -29,7 +26,7 @@ Simple camera frame viewer using **Qt only** - no OpenCV required!
 1. Open Qt Creator
 2. **File** → **Open File or Project**
 3. Select `MicroscopeViewer.pro`
-4. Choose any available kit (MinGW or MSVC, doesn't matter!)
+4. Choose MinGW or MSVC
 5. **Build** → **Build All** (Ctrl+B)
 6. **Build** → **Run** (Ctrl+R)
 
@@ -91,16 +88,6 @@ microscope-viewer-qt/
     ├── imagewidget.h       # Image display with colormap
     └── imagewidget.cpp
 ```
-
-## Advantages of This Approach
-
-✅ **No dependencies** - Just Qt, nothing else to install!
-✅ **Cross-platform** - Works on Windows, macOS, Linux
-✅ **Any compiler** - MinGW, MSVC, GCC all work
-✅ **Faster setup** - No OpenCV configuration needed
-✅ **Lightweight** - Smaller binary size
-✅ **Educational** - Shows Qt image processing capabilities
-
 ## Next Steps
 
 This is the foundation. You can easily add:
@@ -111,5 +98,4 @@ This is the foundation. You can easily add:
 - Adjustable frame rate
 
 ## License
-
 Interview project for OWLO
