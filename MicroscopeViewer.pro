@@ -20,6 +20,7 @@ SOURCES += \
     src/plotwidget.cpp
 
 HEADERS += \
+    src/Data.h \
     src/camera_emulator.h \
     src/mainwindow.h \
     src/imagewidget.h \

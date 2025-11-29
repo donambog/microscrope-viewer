@@ -17,7 +17,7 @@ ImageWidget::ImageWidget(
     setStyleSheet(style.buildStyleSheet());
 }
 
-void ImageWidget::updateFrame(Frame& frame) {
+void ImageWidget::updateFrame(const Frame& frame) {
     QImage image = frameToImage(frame);
     if (!image.isNull()) {
         setPixmap(QPixmap::fromImage(image));
@@ -60,7 +60,7 @@ QRgb ImageWidget::applyColormap(double value) {
     return qRgb(r, g, b);
 }
 
-QImage ImageWidget::frameToImage(Frame& frame) {
+QImage ImageWidget::frameToImage(const Frame& frame) {
     if (frame.empty() || frame[0].empty()) {
         return QImage();
     }

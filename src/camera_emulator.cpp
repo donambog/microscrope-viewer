@@ -1,4 +1,5 @@
 #include "camera_emulator.h"
+#include "Data.h"
 
 int CameraEmulator::getCurrentIndex() {
     // Python equivalent: int(time.time() * 10) % 100
@@ -10,7 +11,7 @@ int CameraEmulator::getCurrentIndex() {
     return static_cast<int>((millis / 100)) % 100;
 }
 
-CameraEmulator::Frame CameraEmulator::readCurrentFrame() {
+Frame CameraEmulator::CameraEmulator::readCurrentFrame() {
     int index = getCurrentIndex();
     
     // Create frame (100 rows x 200 columns matrix)

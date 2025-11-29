@@ -3,7 +3,7 @@
 
 #include <QLabel>
 #include <QImage>
-#include <vector>
+#include "Data.h"
 
 /**
  * @brief Widget to display camera frames using Qt native functions
@@ -11,25 +11,8 @@
  * This widget receives raw frame data and displays it with
  * automatic normalization and colormap.
  */
-using Frame = const std::vector<std::vector<double>>;
-// Logic data
-struct ImageWidgetData {
-    int minWidth = 400;
-    int minHeight = 200;
-    QString initialText = "Waiting for camera frames...";
-};
 
-// Style
-struct ImageWidgetStyle {
-    QString backgroundColor = "#2b2b2b";
-    QFrame::Shape frameShape = QFrame::Box;
-    QFrame::Shadow frameShadow = QFrame::Sunken;
-    Qt::Alignment alignment = Qt::AlignCenter;
-    bool scaledContents = true;
-    QString buildStyleSheet() const {
-        return QString("QLabel { background-color: %1; }").arg(backgroundColor);
-    }
-};
+
 
 class ImageWidget : public QLabel {
     Q_OBJECT
@@ -40,14 +23,13 @@ public:
         const ImageWidgetData& data = ImageWidgetData(),
         const ImageWidgetStyle& style = ImageWidgetStyle()
         );
-    //explicit ImageWidget(QWidget* parent = nullptr);
     
 public slots:
     /**
      * @brief Update display with a new frame
      * @param frame Input frame as 2D vector of doubles
      */
-    void updateFrame(Frame & frame);
+    void updateFrame(const Frame & frame);
     
 protected:
     /**
@@ -62,7 +44,7 @@ protected:
      * @param frame Raw frame data
      * @return QImage with colormap applied
      */
-    QImage frameToImage(const std::vector<std::vector<double>>& frame);
+    QImage frameToImage(const Frame& frame);
 };
 
 #endif // IMAGEWIDGET_H

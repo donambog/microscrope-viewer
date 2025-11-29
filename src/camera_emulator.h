@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <chrono>
+#include "Data.h"
 
 /**
  * @brief Camera emulator for microscope
@@ -16,8 +17,6 @@ class CameraEmulator {
 public:
     static constexpr int WIDTH = 200;
     static constexpr int HEIGHT = 100;
-    
-    using Frame = std::vector<std::vector<double>>;
     
     /**
      * @brief Reads the current frame from the emulated camera
