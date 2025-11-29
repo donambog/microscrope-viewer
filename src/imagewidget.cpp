@@ -3,19 +3,21 @@
 #include <algorithm>
 #include <cmath>
 
-ImageWidget::ImageWidget(QWidget* parent) : QLabel(parent) {
-    // Configure label for image display
-    setScaledContents(true);
-    setMinimumSize(400, 200);
-    setFrameStyle(QFrame::Box | QFrame::Sunken);
-    setAlignment(Qt::AlignCenter);
-    
-    // Set initial background
-    setStyleSheet("QLabel { background-color: #2b2b2b; }");
-    setText("Waiting for camera frames...");
+ImageWidget::ImageWidget(
+    QWidget* parent,
+    const ImageWidgetData& data,
+    const ImageWidgetStyle& style
+    ) : QLabel(parent) {
+    setMinimumSize(data.minWidth, data.minHeight);
+    setText(data.initialText);
+
+    setScaledContents(style.scaledContents);
+    setFrameStyle(style.frameShape | style.frameShadow);
+    setAlignment(style.alignment);
+    setStyleSheet(style.buildStyleSheet());
 }
 
-void ImageWidget::updateFrame(const std::vector<std::vector<double>>& frame) {
+void ImageWidget::updateFrame(Frame& frame) {
     QImage image = frameToImage(frame);
     if (!image.isNull()) {
         setPixmap(QPixmap::fromImage(image));
@@ -58,7 +60,7 @@ QRgb ImageWidget::applyColormap(double value) {
     return qRgb(r, g, b);
 }
 
-QImage ImageWidget::frameToImage(const std::vector<std::vector<double>>& frame) {
+QImage ImageWidget::frameToImage(Frame& frame) {
     if (frame.empty() || frame[0].empty()) {
         return QImage();
     }

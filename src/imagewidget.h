@@ -9,23 +9,47 @@
  * @brief Widget to display camera frames using Qt native functions
  * 
  * This widget receives raw frame data and displays it with
- * automatic normalization and colormap (VIRIDIS-like).
- * No OpenCV required - pure Qt!
+ * automatic normalization and colormap.
  */
+using Frame = const std::vector<std::vector<double>>;
+// Logic data
+struct ImageWidgetData {
+    int minWidth = 400;
+    int minHeight = 200;
+    QString initialText = "Waiting for camera frames...";
+};
+
+// Style
+struct ImageWidgetStyle {
+    QString backgroundColor = "#2b2b2b";
+    QFrame::Shape frameShape = QFrame::Box;
+    QFrame::Shadow frameShadow = QFrame::Sunken;
+    Qt::Alignment alignment = Qt::AlignCenter;
+    bool scaledContents = true;
+    QString buildStyleSheet() const {
+        return QString("QLabel { background-color: %1; }").arg(backgroundColor);
+    }
+};
+
 class ImageWidget : public QLabel {
     Q_OBJECT
     
 public:
-    explicit ImageWidget(QWidget* parent = nullptr);
+    explicit ImageWidget(
+        QWidget* parent = nullptr,
+        const ImageWidgetData& data = ImageWidgetData(),
+        const ImageWidgetStyle& style = ImageWidgetStyle()
+        );
+    //explicit ImageWidget(QWidget* parent = nullptr);
     
 public slots:
     /**
      * @brief Update display with a new frame
      * @param frame Input frame as 2D vector of doubles
      */
-    void updateFrame(const std::vector<std::vector<double>>& frame);
+    void updateFrame(Frame & frame);
     
-private:
+protected:
     /**
      * @brief Apply VIRIDIS-like colormap to a normalized value [0-1]
      * @param value Normalized value between 0 and 1
