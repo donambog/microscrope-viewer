@@ -87,8 +87,9 @@ microscope-viewer-qt/
 |    ├── mainwindow.cpp
 |    ├── imagewidget.h       # Image display with colormap
 |    └── imagewidget.cpp
+|    └──   plotwidget.cpp
 |──unit_test/
-     ├── test_imagewidget.cpp 
+     ├── test_imagewidget.cpp
 ```
 ## Next Steps
 - UnitTest still need to be completed
