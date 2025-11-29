@@ -79,23 +79,18 @@ Pure Qt/C++ implementation of VIRIDIS-like colormap:
 microscope-viewer-qt/
 ├── MicroscopeViewer.pro    # Qt project file
 ├── README.md               # This file
-└── src/
-    ├── main.cpp            # Entry point
-    ├── camera_emulator.h   # Camera simulation
-    ├── camera_emulator.cpp
-    ├── mainwindow.h        # Main window
-    ├── mainwindow.cpp
-    ├── imagewidget.h       # Image display with colormap
-    └── imagewidget.cpp
+|── src/
+|    ├── main.cpp            # Entry point
+|    ├── camera_emulator.h   # Camera simulation
+|    ├── camera_emulator.cpp
+|    ├── mainwindow.h        # Main window
+|    ├── mainwindow.cpp
+|    ├── imagewidget.h       # Image display with colormap
+|    └── imagewidget.cpp
+|──unit_test/
+     ├── test_imagewidget.cpp 
 ```
 ## Next Steps
-
-This is the foundation. You can easily add:
-- X-axis profile plot
-- Y-axis profile plot
-- Export functionality
-- Multiple colormaps
-- Adjustable frame rate
-
+- UnitTest still need to be completed
 ## License
 Interview project for OWLO
