@@ -149,10 +149,10 @@ void MainWindow::onStartStopClicked() {
 
 void MainWindow::onTimerUpdate() {
     // Read current frame from camera
-    auto frame = CameraEmulator::readCurrentFrame();
+    const Frame frame = CameraEmulator::readCurrentFrame();
     
     // Update image display (ImageWidget handles conversion to QImage)
-    imageWidget->updateFrame(frame);
+    imageWidget->updateDisplay(frame);
     
     // Calculate and update X profile
     auto xProfile = CameraEmulator::calculateXProfile(frame);

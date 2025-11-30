@@ -17,7 +17,7 @@ ImageWidget::ImageWidget(
     setStyleSheet(style.buildStyleSheet());
 }
 
-void ImageWidget::updateFrame(const Frame& frame) {
+void ImageWidget::updateDisplay(const Frame& frame) {
     QImage image = frameToImage(frame);
     if (!image.isNull()) {
         setPixmap(QPixmap::fromImage(image));

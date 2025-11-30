@@ -58,7 +58,7 @@ void TestImageWidget::testFrameToImageDimensions()
     TestableImageWidget widget;
 
     // test frame 100x200
-    std::vector<std::vector<double>> frame(100, std::vector<double>(200, 0.5));
+    Frame frame(100, std::vector<double>(200, 0.5));
 
     QImage image = widget.frameToImage(frame);
 
@@ -72,10 +72,10 @@ void TestImageWidget::testUpdateFrameNoCrash()
     ImageWidget widget;
 
     // Frame de test
-    std::vector<std::vector<double>> frame(100, std::vector<double>(200, 0.5));
+    Frame frame(100, std::vector<double>(200, 0.5));
 
     // Ne doit pas crasher
-    widget.updateFrame(frame);
+    widget.updateDisplay(frame);
 
     QVERIFY(true);
 }

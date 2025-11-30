@@ -29,7 +29,7 @@ public slots:
      * @brief Update display with a new frame
      * @param frame Input frame as 2D vector of doubles
      */
-    void updateFrame(const Frame & frame);
+    void updateDisplay(const Frame & frame);
     
 protected:
     /**
