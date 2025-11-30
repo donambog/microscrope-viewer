@@ -6,13 +6,10 @@
 #include "Data.h"
 
 /**
- * @brief Widget to display camera frames using Qt native functions
- * 
- * This widget receives raw frame data and displays it with
- * automatic normalization and colormap.
+ * @brief Widget to display processed images
+ *
+ * Responsibilities: Display only (no processing)
  */
-
-
 
 class ImageWidget : public QLabel {
     Q_OBJECT
@@ -26,25 +23,10 @@ public:
     
 public slots:
     /**
-     * @brief Update display with a new frame
-     * @param frame Input frame as 2D vector of doubles
+     * @brief Display a processed image
+     * @param image Already processed QImage ready for display
      */
-    void updateDisplay(const Frame & frame);
-    
-protected:
-    /**
-     * @brief Apply VIRIDIS-like colormap to a normalized value [0-1]
-     * @param value Normalized value between 0 and 1
-     * @return RGB color
-     */
-    QRgb applyColormap(double value);
-    
-    /**
-     * @brief Convert frame data to QImage
-     * @param frame Raw frame data
-     * @return QImage with colormap applied
-     */
-    QImage frameToImage(const Frame& frame);
+    void displayImage(const QImage& image);
 };
 
 #endif // IMAGEWIDGET_H

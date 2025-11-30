@@ -7,6 +7,7 @@ TEMPLATE = app
 
 HEADERS += ../src/imagewidget.h \
            ../src/Data.h
+
 SOURCES +=  \
     test_imagewidget.cpp \
     ../src/imagewidget.cpp

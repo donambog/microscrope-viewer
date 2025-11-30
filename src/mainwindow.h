@@ -8,6 +8,7 @@
 #include "imagewidget.h"
 #include "plotwidget.h"
 #include "camera_emulator.h"
+#include "displaymanager.h"
 
 /**
  * @brief Main application window
@@ -49,6 +50,7 @@ private:
     PlotWidget* yProfilePlot;
     QLabel* statusLabel;
     QLabel* fpsLabel;
+    DisplayManager* displayManager;
     
     // Timer for live updates
     QTimer* updateTimer;

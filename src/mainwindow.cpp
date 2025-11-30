@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget* parent)
     , frameCount(0)
     , lastFpsUpdate(0)
 {
+    displayManager = new DisplayManager();
     setupUI();
     
     // Create and configure timer (100ms = 10 FPS)
@@ -26,6 +27,7 @@ MainWindow::~MainWindow() {
     if (updateTimer->isActive()) {
         updateTimer->stop();
     }
+     delete displayManager;
 }
 
 void MainWindow::setupUI() {
@@ -152,8 +154,8 @@ void MainWindow::onTimerUpdate() {
     const Frame frame = CameraEmulator::readCurrentFrame();
     
     // Update image display (ImageWidget handles conversion to QImage)
-    imageWidget->updateDisplay(frame);
-    
+    QImage processedImage = displayManager->processFrame(frame);
+    imageWidget->displayImage(processedImage);
     // Calculate and update X profile
     auto xProfile = CameraEmulator::calculateXProfile(frame);
     xProfilePlot->updateData(xProfile);
