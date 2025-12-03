@@ -17,7 +17,8 @@ SOURCES += \
     src/camera_emulator.cpp \
     src/mainwindow.cpp \
     src/imagewidget.cpp \
-    src/plotwidget.cpp
+    src/plotwidget.cpp \
+    src/displaymanager.cpp
 
 HEADERS += \
     src/Data.h \
@@ -25,7 +26,8 @@ HEADERS += \
     src/mainwindow.h \
     src/imagewidget.h \
     src/plotwidget.h \
-    src/plotwidget.h
+    src/plotwidget.h \
+    src/displaymanager.h
 
 INCLUDEPATH += src
 
